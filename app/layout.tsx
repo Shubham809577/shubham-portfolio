@@ -14,9 +14,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jenish Patel | Data Analyst",
+  title: "Shubham Gaikwad | Structural Engineer",
   description:
-    "Portfolio of Jenish Patel — Data Analyst graduating with an MS in Computer Science (George Mason University, May 2026).",
+    "Portfolio of Shubham Gaikwad — Structural Engineering graduate (M.S. Civil & Infrastructure Engineering, George Mason University). Structural design, bridge engineering, and construction coordination.",
 };
 
 export default function RootLayout({

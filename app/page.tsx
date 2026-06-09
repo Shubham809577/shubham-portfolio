@@ -1,6 +1,13 @@
 import { Container } from "./components/Container";
-import Link from "next/link";
-import { profile, kpis, skillGroups, experience, projects } from "./data/profile";
+import {
+  profile,
+  kpis,
+  skillGroups,
+  experience,
+  projects,
+  certifications,
+  transcripts,
+} from "./data/profile";
 import { CountUp } from "./components/CountUp";
 import { RadarChart } from "./components/RadarChart";
 import { Reveal } from "./components/Reveal";
@@ -9,7 +16,8 @@ import { SectionPanel } from "./components/SectionPanel";
 import { HeroName } from "./components/HeroName";
 import { Timeline, TimelineItem } from "./components/Timeline";
 import { EducationCard } from "./components/EducationCard";
-import { IconGitHub, IconLinkedIn, IconMail } from "./components/Icons";
+import { IconLinkedIn, IconMail, IconPhone } from "./components/Icons";
+import { SectionLink } from "./components/SectionLink";
 
 export default function Home() {
   return (
@@ -25,8 +33,8 @@ export default function Home() {
                       <HeroName />
 
                       <div className="mt-8">
-                        <Link
-                          href="#projects"
+                        <SectionLink
+                          sectionId="projects"
                           className="nav-cta inline-flex items-center justify-center gap-2 rounded-md border border-[color:var(--border)] bg-[color:var(--card)] px-5 py-3 text-sm font-medium text-white/90"
                         >
                           <span
@@ -34,13 +42,13 @@ export default function Home() {
                             aria-hidden
                           />
                           View My Work
-                        </Link>
+                        </SectionLink>
                       </div>
                     </div>
 
                     <div className="surface surface-hover rounded-2xl p-6">
                       <p className="font-mono text-xs uppercase tracking-wider text-white/55 hover-word">
-                        Snapshot
+                        Infrastructure Impact
                       </p>
                       <div className="mt-5 grid gap-4 sm:grid-cols-2">
                         {kpis.map((k) => (
@@ -154,12 +162,14 @@ export default function Home() {
                         ))}
                       </div>
 
-                      <div className="mt-6">
-                        <span className="hover-word inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/55">
-                          View Details{" "}
-                          <span className="text-[color:var(--accent)]">→</span>
-                        </span>
-                      </div>
+                      {!p.hideViewDetails ? (
+                        <div className="mt-6">
+                          <span className="hover-word inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/55">
+                            View Details{" "}
+                            <span className="text-[color:var(--accent)]">→</span>
+                          </span>
+                        </div>
+                      ) : null}
                     </article>
                   ))}
                 </div>
@@ -183,7 +193,6 @@ export default function Home() {
                         side={i % 2 === 0 ? "left" : "right"}
                         title={e.role}
                         subtitle={e.company}
-                        companyUrl={e.companyUrl}
                         dates={e.dates}
                       >
                         <ul className="list-disc space-y-2 pl-5 text-sm leading-6 text-white/70">
@@ -214,8 +223,73 @@ export default function Home() {
                       school={ed.school}
                       degree={ed.degree}
                       meta={ed.meta}
-                      transcriptSrc={ed.transcriptSrc}
                     />
+                  ))}
+                </div>
+              </Reveal>
+            </SectionPanel>
+
+            <SectionPanel id="transcripts">
+              <Reveal>
+                <p className="font-mono text-xs uppercase tracking-wider text-white/55 hover-word hover-word--alt">
+                  Academic Records
+                </p>
+                <h2 className="hover-word mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+                  Transcripts
+                </h2>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {transcripts.map((t) => (
+                    <a
+                      key={t.label}
+                      className="surface surface-hover flex flex-col gap-2 rounded-2xl p-5 text-white/85"
+                      href={t.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span className="font-mono text-2xl text-[color:var(--accent)]" aria-hidden>
+                        ↗
+                      </span>
+                      <span className="font-mono text-sm font-medium">{t.label}</span>
+                      <span className="text-xs text-white/50">PDF</span>
+                    </a>
+                  ))}
+                </div>
+              </Reveal>
+            </SectionPanel>
+
+            <SectionPanel id="certifications">
+              <Reveal>
+                <p className="font-mono text-xs uppercase tracking-wider text-white/55 hover-word hover-word--alt">
+                  Certifications
+                </p>
+                <h2 className="hover-word mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+                  Training & credentials
+                </h2>
+
+                <div className="mt-8 grid gap-6 lg:grid-cols-3">
+                  {certifications.map((cert) => (
+                    <div
+                      key={cert.title}
+                      className="surface surface-hover rounded-2xl p-6"
+                    >
+                      <p className="hover-word text-lg font-semibold leading-snug">
+                        {cert.title}
+                      </p>
+                      <p className="mt-2 text-sm text-white/75">{cert.issuer}</p>
+                      <p className="mt-2 font-mono text-xs text-[color:var(--highlight)]">
+                        {cert.meta}
+                      </p>
+                      <a
+                        href={cert.pdfSrc}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover-word mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white/55"
+                      >
+                        View Certificate{" "}
+                        <span className="text-[color:var(--accent)]">→</span>
+                      </a>
+                    </div>
                   ))}
                 </div>
               </Reveal>
@@ -281,22 +355,21 @@ export default function Home() {
                   </a>
                   <a
                     className="surface surface-hover flex flex-col gap-2 rounded-2xl p-5 text-white/85"
-                    href={profile.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={profile.phoneHref}
                   >
                     <span className="text-[color:var(--accent)]">
-                      <IconGitHub />
+                      <IconPhone />
                     </span>
-                    <span className="font-mono text-sm font-medium">GitHub</span>
+                    <span className="font-mono text-sm font-medium">Phone</span>
                     <span className="text-xs text-white/50 break-all">
-                      {profile.githubDisplay}
+                      {profile.phone}
                     </span>
                   </a>
                   <a
                     className="surface surface-hover flex flex-col gap-2 rounded-2xl p-5 text-white/85"
                     href={profile.resumeSrc}
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <span className="font-mono text-2xl text-[color:var(--accent)]" aria-hidden>
                       ↓

@@ -82,6 +82,25 @@ export function IconExternalLink({
   );
 }
 
+export function IconPhone({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M6.5 4.5h3l1.5 4.5-2 1.5c1 2.5 2.8 4.3 5.3 5.3l1.5-2 4.5 1.5v3c0 .8-.7 1.5-1.5 1.5C10.2 19.8 4.2 13.8 4.2 6c0-.8.7-1.5 1.5-1.5Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function IconGitHub({ className = "h-5 w-5" }: { className?: string }) {
   return (
     <svg

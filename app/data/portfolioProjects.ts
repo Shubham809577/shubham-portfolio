@@ -18,49 +18,40 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
-    id: "learning-kpi",
-    title: "Learning analytics KPI dashboard",
+    id: "steel-staad",
+    title: "Steel structure design – STAAD.Pro",
     description:
-      "KPI layer for learner performance and engagement with dashboards for trends and segmentation.",
-    tags: ["Tableau", "Power BI", "SQL"],
+      "Load combinations per ASCE 7 LRFD with optimized steel member sizing and buckling analysis.",
+    tags: ["STAAD.Pro", "AISC 360", "ASCE 7-22"],
     featured: true,
   },
   {
-    id: "etl-reporting",
-    title: "ETL for analysis-ready reporting tables",
+    id: "prestressed-larsa",
+    title: "Prestressed beam design – LARSA 4D",
     description:
-      "Repeatable transforms to cut manual spreadsheet work and standardize metrics.",
-    tags: ["Python", "Pandas", "Snowflake"],
+      "Time-dependent effects modeling with staged construction analysis per ACI 209R and AASHTO LRFD.",
+    tags: ["LARSA 4D", "Prestressed Concrete", "ACI 209R"],
     featured: true,
   },
   {
-    id: "voip-revenue",
-    title: "VoIP revenue opportunity analysis",
+    id: "mixed-use-ram",
+    title: "4-story mixed-use building – RAM & Revit",
     description:
-      "Usage and call-pattern analysis to surface revenue opportunities and priorities.",
-    tags: ["SQL", "Excel", "Analytics"],
+      "Steel-framed gravity and lateral systems designed per IBC 2021 with wind and seismic load analysis.",
+    tags: ["RAM Structural System", "Revit", "IBC 2021"],
   },
   {
-    id: "sql-perf",
-    title: "SQL query performance optimization",
+    id: "bridge-midas",
+    title: "Bridge substructure design – MIDAS Civil",
     description:
-      "Refactored high-impact queries for faster, more reliable downstream reporting.",
-    tags: ["SQL", "BigQuery", "Snowflake"],
+      "Pile foundations and pier caps with soil-structure interaction modeling per AASHTO LRFD.",
+    tags: ["MIDAS Civil", "AASHTO LRFD", "Foundation Design"],
   },
   {
-    id: "placeholder-1",
-    title: "Your project",
+    id: "drainage-qgis",
+    title: "Urban waterlogging remedial – QGIS",
     description:
-      "Add a title, one-line impact, stack tags, and an optional link in portfolioProjects.ts.",
-    tags: [],
-    isPlaceholder: true,
-  },
-  {
-    id: "placeholder-2",
-    title: "Another project",
-    description:
-      "Duplicate a project object above, set isPlaceholder to false, and fill in details.",
-    tags: [],
-    isPlaceholder: true,
+      "Drainage pattern analysis and stormwater solutions for flood-prone urban areas.",
+    tags: ["QGIS", "Drainage Design", "Stormwater"],
   },
 ];

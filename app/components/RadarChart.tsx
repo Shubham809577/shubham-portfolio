@@ -1,6 +1,6 @@
 export function RadarChart({
-  labels = ["SQL", "BI", "Data Eng", "ML/Stats", "Storytelling"],
-  values = [0.9, 0.85, 0.78, 0.72, 0.82],
+  labels = ["Structural", "Bridge", "Steel", "Concrete", "Analysis"],
+  values = [0.92, 0.88, 0.9, 0.85, 0.9],
 }: {
   labels?: string[];
   values?: number[];

@@ -17,7 +17,6 @@ export function HeroName() {
           className="inline-block cursor-pointer text-4xl font-semibold tracking-tight text-white transition-colors hover:text-[color:var(--accent)] sm:text-6xl"
         />
         <p className="mt-2 font-mono text-xs text-white/40">
-          Hover or click name for photo
         </p>
       </div>
 

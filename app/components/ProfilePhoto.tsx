@@ -117,7 +117,7 @@ export function ProfilePhotoProvider({ children }: { children: ReactNode }) {
               alt={`${profile.name} headshot`}
               fill
               sizes="128px"
-              className="object-cover object-[50%_22%] scale-[1.35]"
+              className="object-cover object-[50%_18%]"
               priority
             />
           </div>
